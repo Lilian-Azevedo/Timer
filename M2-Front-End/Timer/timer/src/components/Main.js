@@ -10,12 +10,18 @@ export default class App extends Component {
   state = {
     min: 0,
     seg: 0,
+    hour: 0,
     start: false,
     finished: false,
   }
 
   updateTimer = ({target: { name, id }}) => {
-    if(name === 'min') {
+    if(name === 'hour') {
+      this.setState((previous)=> ({
+          hour: id === 'hour-increase'? previous.hour + 1 : previous.hour - 1,
+      }))
+  
+    } else if(name === 'min') {
         this.setState((previous)=> ({
             min: id === 'min-increase'? previous.min + 1 : previous.min - 1,
         }))

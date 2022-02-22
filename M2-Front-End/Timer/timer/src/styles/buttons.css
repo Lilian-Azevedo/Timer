@@ -32,8 +32,3 @@ span {
     text-align: center;
     line-height: 40px;    
 }
-
-.container-min {
-    display: flex;
-    flex-direction: column;
-}

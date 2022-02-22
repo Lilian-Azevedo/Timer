@@ -10,9 +10,10 @@
 }
 
 body {
-	display: grid;
+	display: flex;
 	font: 1em/1.5 sans-serif;
-	height: 100vh;
+	align-items: center;
+	justify-content: center;
 }
 
 .container-hourglass {

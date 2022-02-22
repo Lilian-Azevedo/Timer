@@ -10,6 +10,7 @@ export default class Countdown extends Component {
     this.state = {
       seg: props.seg,
       min: props.min,
+      hour: props.hour,
       stoped: false,
     };
   }
@@ -20,7 +21,7 @@ export default class Countdown extends Component {
 
   componentDidUpdate(_prevProps, prevState) {
     const { finishedTime } = this.props;
-    if(prevState.seg === 1 && prevState.min === 0) {
+    if(prevState.seg === 1 && prevState.min === 0 && prevState.hour === 0) {
         clearInterval(this.timer);
         finishedTime(); 
     }
@@ -29,7 +30,8 @@ export default class Countdown extends Component {
   startTimer = () => {
     this.setState({ stoped: false });
     this.timer = setInterval(() => {
-        this.setState(({seg, min}) => ({
+        this.setState(({seg, min, hour}) => ({
+            hour: (seg === 0 && min == 0 && hour > 0 )? hour - 1: hour,
             seg: (seg === 0)? 59: seg - 1 ,
             min: ((seg === 0) && min > 0)? min - 1: min,
         }));
@@ -41,18 +43,15 @@ export default class Countdown extends Component {
     clearInterval(this.timer);
   }
 
- /*  playAlert = () => {
-    const audio = new Audio(song);
-    song.play();
-  }; */
-
   render() {
     const { cancelTimer } = this.props;
-    const { seg, min, stoped } = this.state;
+    const { seg, min, hour, stoped } = this.state;
     return (
     <div className='page'>
         <div className='main'>
             <div className='timer'>
+                <h3>{hour < 10? '0'+ hour : hour}</h3>
+                <span>:</span>
                 <h3>{min < 10? '0'+ min : min}</h3>
                 <span>:</span>
                 <h3>{seg < 10? '0'+ seg : seg }</h3>
