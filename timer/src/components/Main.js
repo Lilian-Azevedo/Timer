@@ -58,7 +58,8 @@ export default class App extends Component {
           update={this.updateTimer}
           startTimer ={this.startTimer}/>}
         {this.state.start && !this.state.finished && <Countdown {...this.state}
-          finishedTime={this.finishedTime}/>}
+          finishedTime={this.finishedTime}
+          cancelTimer={this.cancelTimer}/>}
         {this.state.finished && <Finished 
           cancelTimer={this.cancelTimer}/>}
       </div>

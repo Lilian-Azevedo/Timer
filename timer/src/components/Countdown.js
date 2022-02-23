@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../styles/buttons.css';
 import '../styles/counter.css';
 import '../styles/hourglass.css';
-/* import song from './ringingBell.mp3'; */
 
 export default class Countdown extends Component {
   constructor(props) {
@@ -31,9 +30,9 @@ export default class Countdown extends Component {
     this.setState({ stoped: false });
     this.timer = setInterval(() => {
         this.setState(({seg, min, hour}) => ({
-            hour: (seg === 0 && min == 0 && hour > 0 )? hour - 1: hour,
+            hour: (seg === 0 && min === 0 && hour > 0 )? hour - 1: hour,
+            min:((seg === 0 && min === 0 && hour > 0) ? 59: (seg === 0 && min > 0)? min - 1: min),
             seg: (seg === 0)? 59: seg - 1 ,
-            min: ((seg === 0) && min > 0)? min - 1: min,
         }));
     }, 1000);
   }
@@ -48,8 +47,8 @@ export default class Countdown extends Component {
     const { seg, min, hour, stoped } = this.state;
     return (
     <div className='page'>
-        <div className='main'>
-            <div className='timer'>
+        <div className='main countdown-main'>
+            <div className='countdown'>
                 <h3>{hour < 10? '0'+ hour : hour}</h3>
                 <span>:</span>
                 <h3>{min < 10? '0'+ min : min}</h3>

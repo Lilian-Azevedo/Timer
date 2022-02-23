@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 100vh;
 }
 .main {
     display: flex;
@@ -11,13 +10,16 @@
     align-items: center;
     height: 100vh;
 }
+.countdown-main {
+    margin-right: 100px;
+}
 
-.main .timer {
+.main .timer, .main .countdown {
     display: flex;
     flex-direction: row;
 }
 
-.main .timer h3 {
+.main .timer h3,  .main .countdown h3{
     background-color: rgba(255, 255, 255, 0.788);
     border-radius: 10px;
     box-shadow: 10px 5px 5px black;
@@ -32,8 +34,26 @@
     margin: 6px;
 }
 
-.main .timer span {
+.main .timer span, .main .countdown span {
     margin-top: 25px;
     font-weight: 800;
     font-size: 40px;
+}
+
+@media screen and (max-width : 628px ) {  
+    .page {
+        flex-direction: column;
+    }
+    .countdown-main {
+        height: 60vh;
+        margin-right: 0;
+    }
+    .main .timer h3, .main .countdown h3 {
+       padding: 0 10px;
+       height: 50px;
+       font-size: 40px;
+    }
+    .main .timer span, .main .countdown span {
+        margin-top: 2px;
+    }
 }
