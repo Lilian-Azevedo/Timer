@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import excludesTimer from '../services/setting';
 import '../styles/buttons.css';
+import { func } from 'prop-types';
 
 
 export default class Settings extends Component {
@@ -40,4 +41,8 @@ export default class Settings extends Component {
       </div>
     )
   }
+}
+
+Settings.propTypes = {
+    cancelTimer: func.isRequired,
 }

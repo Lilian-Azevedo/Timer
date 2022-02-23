@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/finished.css';
 import '../styles/counter.css';
 import song from './ringingBell.mp3'; 
+import { func } from 'prop-types';
 
 const audio = new Audio(song);
 
@@ -25,4 +26,7 @@ export default class Finished extends Component {
     </div>
     )
   }
+}
+Finished.propTypes = {
+  cancelTimer: func.isRequired,
 }
