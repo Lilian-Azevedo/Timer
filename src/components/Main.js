@@ -23,13 +23,15 @@ export default class App extends Component {
   
     } else if(name === 'min') {
         this.setState((previous)=> ({
-            min: id === 'min-increase'? (
-              previous.min === 59 ? 0 : previous.min + 1) : previous.min - 1,
+            min: id === 'min-increase'
+              ? (previous.min === 59 ? 0 : previous.min + 1) 
+              : (previous.min === 0 ? 59 : previous.min - 1) 
         }))
     } else {
         this.setState((previous)=> ({
-            seg: id === 'seg-increase'? (
-            previous.seg === 55 ? 0 : previous.seg + 5) : previous.seg - 5,
+            seg: id === 'seg-increase'
+              ? (previous.seg === 55 ? 0 : previous.seg + 5)
+              : (previous.seg === 0 ? 55 : previous.seg - 5) 
         }))
     }
   }

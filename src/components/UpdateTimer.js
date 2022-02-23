@@ -25,13 +25,13 @@ export default class UpdateTimer extends Component {
         <div className='container-min'>
             <div className='buttons-update'>
                 <button type='button' onClick={update} id='min-increase' name='min'>+ 1min</button>
-                <button type='button' onClick={update} id='min-decrease' name='min' disabled={ min === 0}>- 1min</button>
+                <button type='button' onClick={update} id='min-decrease' name='min'>- 1min</button>
             </div>
         </div>
         <div className='container-seg'>
             <div className='buttons-update'>
                 <button type='button' onClick={update} id='seg-increase' name='seg'>+ 5seg</button>
-                <button type='button' onClick={update} id='seg-decrease' name='seg' disabled={ seg === 0}>- 5seg</button>
+                <button type='button' onClick={update} id='seg-decrease' name='seg'>- 5seg</button>
             </div>
         </div>
         <div>
