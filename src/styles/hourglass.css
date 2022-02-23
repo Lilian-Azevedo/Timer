@@ -14,6 +14,7 @@ body {
 	font: 1em/1.5 sans-serif;
 	align-items: center;
 	justify-content: center;
+	height: 100vh;
 }
 
 .container-hourglass {

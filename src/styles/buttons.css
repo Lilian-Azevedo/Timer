@@ -32,3 +32,24 @@ span {
     text-align: center;
     line-height: 40px;    
 }
+
+.history {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: rgb(240, 242, 248);
+    letter-spacing: 3px;
+}

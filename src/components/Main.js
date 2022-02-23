@@ -4,6 +4,7 @@ import '../styles/counter.css';
 import '../styles/hourglass.css';
 import Countdown from './Countdown';
 import Finished from './Finished';
+import Settings from './Settings';
 import UpdateTimer from './UpdateTimer';
 
 export default class App extends Component {
@@ -13,6 +14,28 @@ export default class App extends Component {
     hour: 0,
     start: false,
     finished: false,
+    settings: false,
+  }
+
+  componentDidMount() {
+    this.getHistoryOfTimers();
+  }
+
+  getHistoryOfTimers = () => {
+    const timersStored = JSON.parse(localStorage.getItem('timer-history'));
+    if (timersStored) {
+      this.setState({
+        previousTimers: timersStored,
+      });    
+    }
+  }
+
+  onChangeTimer = ({ target: {id}}) => {
+    let [hour,_,min,,seg] = id;
+    hour = Number(hour);
+    min = Number(min);
+    seg = Number(seg);
+    this.setState({ seg, min, hour });
   }
 
   updateTimer = ({target: { name, id }}) => {
@@ -46,7 +69,9 @@ export default class App extends Component {
     this.setState({ 
       start: false,
       finished: false,
+      settings: false,
     });
+    this.getHistoryOfTimers();
   }
 
   finishedTime = () => {
@@ -61,17 +86,28 @@ export default class App extends Component {
     });
   }
 
+  settingsClick = () => {
+    this.setState({ 
+      settings: true,
+    });
+  }
+
   render() {
     return (
       <div className="page">
-        {!this.state.start && <UpdateTimer {...this.state}
+        {!this.state.start && !this.state.settings &&<UpdateTimer {...this.state}
+          onChangeTimer={this.onChangeTimer}
           update={this.updateTimer}
+          settingsClick={this.settingsClick}
           startTimer ={this.startTimer}
-          resetTimer={this.resetTimer}/>}
+          resetTimer={this.resetTimer}
+          getHistoryOfTimers={this.getHistoryOfTimers}/>}
         {this.state.start && !this.state.finished && <Countdown {...this.state}
           finishedTime={this.finishedTime}
           cancelTimer={this.cancelTimer}/>}
         {this.state.finished && <Finished 
+          cancelTimer={this.cancelTimer}/>}
+        {this.state.settings && <Settings 
           cancelTimer={this.cancelTimer}/>}
       </div>
     );
