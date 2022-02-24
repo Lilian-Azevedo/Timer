@@ -18,7 +18,7 @@ export default class Settings extends Component {
     this.setState({ previousTimers: timersFromLocal });
   }
 
-  exclude = (id) => {
+  exclude = ({target: { id }}) => {
     excludesTimer(id);
     this.getFromLocal();
   }
@@ -30,9 +30,9 @@ export default class Settings extends Component {
         <h3>Clique em um timer para apagar</h3>
         <div className='history'>
             { previousTimers
-            && previousTimers.map(({ hour, min, seg }) => (
+            && previousTimers.map(({ hour, min, seg, id }) => (
             <div key={ Math.random() } className='buttons-update'>
-                <button type='button' onClick={() => this.exclude({hour, min, seg})} id={[hour, min, seg]}>
+                <button type='button' onClick={this.exclude} id={ id }>
                     {hour < 10? '0'+ hour : hour}:{min < 10? '0'+ min : min}:{seg < 10? '0'+ seg : seg }
                 </button>
             </div>))}

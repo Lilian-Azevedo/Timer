@@ -7,7 +7,8 @@ import HistoryTimer from './HistoryTimer';
 
 export default class UpdateTimer extends Component {
   addTimerToLocal = ({hour, min, seg}, getHistoryOfTimers) => {
-    addTimer({hour, min, seg});
+    const id = Math.random();
+    addTimer({hour, min, seg, id});
     getHistoryOfTimers();
   }
 

@@ -30,8 +30,8 @@ export default class App extends Component {
     }
   }
 
-  onChangeTimer = ({ target: {id}}) => {
-    let [hour,,min,,seg] = id;
+  onChangeTimer = ({ target: { name }}) => {
+    let [hour,,min,,seg] = name;
     hour = Number(hour);
     min = Number(min);
     seg = Number(seg);

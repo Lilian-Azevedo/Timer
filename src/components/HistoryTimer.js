@@ -8,9 +8,9 @@ export default class HistoryTimer extends Component {
     return (
       <div className='history'>
         { previousTimers
-        && previousTimers.map(({ hour, min, seg }) => (
+        && previousTimers.map(({ hour, min, seg, id }) => (
           <div key={ Math.random() } className='buttons-update'>
-            <button type='button' onClick={onChangeTimer} id={[hour, min, seg]}>
+            <button type='button' onClick={onChangeTimer} id={id} name={`${hour}-${min}-${seg}`}>
                 {hour < 10? '0'+ hour : hour}:{min < 10? '0'+ min : min}:{seg < 10? '0'+ seg : seg }
             </button>
           </div>))}
