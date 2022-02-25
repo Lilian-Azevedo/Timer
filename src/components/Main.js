@@ -15,6 +15,7 @@ export default class App extends Component {
     start: false,
     finished: false,
     settings: false,
+    previousTimers: '',
   }
 
   componentDidMount() {
@@ -30,11 +31,11 @@ export default class App extends Component {
     }
   }
 
-  onChangeTimer = ({ target: { name }}) => {
-    let [hour,,min,,seg] = name;
-    hour = Number(hour);
-    min = Number(min);
-    seg = Number(seg);
+  onChangeTimer = ({ target: { id}}) => {
+    const { previousTimers } = this.state;
+    this.resetTimer();
+    const findTimer = previousTimers.find((timer) => timer.id === Number(id));
+    let {hour,min,seg} = findTimer;
     this.setState({ seg, min, hour });
   }
 

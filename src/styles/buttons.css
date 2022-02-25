@@ -6,6 +6,10 @@ button {
     display: inline-block;
 }
 
+button:hover {
+    color: rgba(106, 134, 209, 0.8);
+}
+
 span {
     margin-top: 20px;
     margin-bottom: -5px;
