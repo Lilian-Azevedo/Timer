@@ -51,13 +51,11 @@ export default class Countdown extends Component {
             seg: (seg === 0)? 59: seg - 1 ,
         }));
     }, 1000);
-    this.togglePlay();
   }
 
   stopTimer = () => {
     this.setState({ stoped: true });
     clearInterval(this.timer);
-    this.togglePlay();
   }
 
   render() {
