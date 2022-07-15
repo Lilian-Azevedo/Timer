@@ -6,6 +6,7 @@ Este timer foi desenvolvido no começo dos estudos de Front-End. Nele, pode-se a
 
 Também é possível salvar os tempos mais usados, reproduzi-los novamente ao clicar, ver a lista dos salvos e deletá-los.
 O app ainda possui um alarme ao final e durante a contagem, toca a música tema da saga Harry Potter.
+Deploy: https://timer-beta.vercel.app/
 
 Funciona de modo responsivo a diversas telas;
 ## Técnologias usadas
